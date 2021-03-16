@@ -18,13 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calzolari.TestServer.EntityFramework\Calzolari.TestServer.EntityFramework\Calzolari.TestServer.EntityFramework.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Calzolari.TestServer.EntityFramework\Calzolari.TestServer.EntityFramework\Calzolari.TestServer.EntityFramework.csproj" />
-    <ProjectReference Include="..\Calzolari.TestServer.EntityFramework\Calzolari.WebApi\Calzolari.WebApi.csproj" />
-    <!--<WebApplicationFactoryContentRootAttribute Include="Calzolari.WebApi" AssemblyName="Calzolari.WebApi" ContentRootPath="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\Calzolari.TestServer.EntityFramework\Calzolari.WebApi\Calzolari.WebApi'))" ContentRootTest="Calzolari.WebApi.csproj" Priority="-1" />-->
+    <ProjectReference Include="..\Calzolari.TestServer.EntityFramework\Calzolari.TestServer.EntityFramework.csproj" />
+    <ProjectReference Include="..\Calzolari.WebApi\Calzolari.WebApi.csproj" />
   </ItemGroup>
 
 </Project>

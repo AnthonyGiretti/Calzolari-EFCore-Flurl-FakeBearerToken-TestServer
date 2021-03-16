@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calzolari.TestServer.Entity
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calzolari.WebApi", "Calzolari.WebApi\Calzolari.WebApi.csproj", "{97C8DD73-0E9C-4CD7-9FCC-72B9275FCE7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calzolari.WebApi.Tests", "..\Calzolari.WebApi.Tests\Calzolari.WebApi.Tests.csproj", "{2B212295-FE20-4F64-B9D8-80AC5EE12C42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calzolari.WebApi.Tests", "Calzolari.WebApi.Tests\Calzolari.WebApi.Tests.csproj", "{2B212295-FE20-4F64-B9D8-80AC5EE12C42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
