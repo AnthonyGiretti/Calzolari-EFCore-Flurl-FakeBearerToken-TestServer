@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Custom factory and extensions that facilitates integration testing with EF Core. The TestServer client uses Flurl for fluent API calls and cleaner integration tests</Description>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/AnthonyGiretti/Calzolari-EFCore-Flurl-FakeBearerToken-TestServer</PackageProjectUrl>
+    <PackageIcon>calzolari.png</PackageIcon>
+    <RepositoryUrl>https://github.com/AnthonyGiretti/Calzolari-EFCore-Flurl-FakeBearerToken-TestServer</RepositoryUrl>
+    <PackageTags>dotnet;aspnetcore;testserver;flurl;entotyframeworkcore</PackageTags>
+    <Version>5.0.4</Version>
+    <Company>Calzolari</Company>
+    <Authors>Anthony Giretti</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Factory\**" />
+    <EmbeddedResource Remove="Factory\**" />
+    <None Remove="Factory\**" />
+    <None Include="..\calzolari.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.4" />
+    <PackageReference Include="Calzolari.DependencyInjection.Extensions" Version="5.0.1" />
+    <PackageReference Include="Flurl.Http" Version="3.0.1" />
+    <PackageReference Include="WebMotions.Fake.Authentication.JwtBearer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.4" />
+  </ItemGroup>
+
+</Project>

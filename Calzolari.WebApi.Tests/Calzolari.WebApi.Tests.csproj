@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.15.0" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Calzolari.TestServer.EntityFramework\Calzolari.TestServer.EntityFramework\Calzolari.TestServer.EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Calzolari.TestServer.EntityFramework\Calzolari.TestServer.EntityFramework\Calzolari.TestServer.EntityFramework.csproj" />
+    <ProjectReference Include="..\Calzolari.TestServer.EntityFramework\Calzolari.WebApi\Calzolari.WebApi.csproj" />
+    <!--<WebApplicationFactoryContentRootAttribute Include="Calzolari.WebApi" AssemblyName="Calzolari.WebApi" ContentRootPath="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\Calzolari.TestServer.EntityFramework\Calzolari.WebApi\Calzolari.WebApi'))" ContentRootTest="Calzolari.WebApi.csproj" Priority="-1" />-->
+  </ItemGroup>
+
+</Project>
