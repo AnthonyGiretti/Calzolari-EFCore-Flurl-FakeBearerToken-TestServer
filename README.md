@@ -1,10 +1,12 @@
 # Clean integration tests with EF Core, Flurl, FakeBearer and Calzolari.TestServer.EntityFramework 
 
-A fluent library to easily write integration tests for ASP.NET Core with EntityFramework Core
+A fluent library to easily write integration tests for ASP.NET Core with EntityFramework Core.
 
-Following example uses AutoFixture and xUnit but you can use other tools if you desire
+Following example uses AutoFixture and xUnit but you can use other tools if you desire.
 
 **Parallelism MUST BE deactivated while testing**, the database is created and removed after each test which avoids any data collision, the DbContext is reinstancianted between each test.
+
+It's not recommended for large databases.
 
 This library uses [Flurl](https://flurl.dev/) and [FakeBearerToken](https://github.com/webmotions/fake-authentication-jwtbearer) ([Dominique St-Amand](https://github.com/DOMZE))
 
