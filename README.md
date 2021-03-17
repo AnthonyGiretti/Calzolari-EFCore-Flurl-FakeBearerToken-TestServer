@@ -14,7 +14,7 @@ This library uses [Flurl](https://flurl.dev/) and [FakeBearerToken](https://gith
 
 Add xUnit as tests runner and AutoFixture (optional)
 
-## Download the package Calzolari.TestServer.EntityFramework
+## Install the package Calzolari.TestServer.EntityFramework
 
 (https://www.nuget.org/packages/Calzolari.TestServer.EntityFramework/)
 
