@@ -134,7 +134,26 @@ Arrange(dbContext => { dbContext.Countries.Add(country); });
 
 // country.CountryId CountryId is filled
 ```
+Then call your SUT:
 
+```csharp
+var response = await BASE_REQUEST.Route(BaseRoute).GetAsync();
+```
+
+And assert the result:
+
+```csharp
+response.StatusCode
+.Should()
+.Be((int) HttpStatusCode.OK);
+
+(await response.ResponseMessage
+    .Content
+    .ReadAsAsync<IEnumerable<Country>>())
+    .Should()
+    .BeEquivalentTo(countries);
+```                    
+                    
 Simple usage of GET verb can be found here: https://github.com/AnthonyGiretti/Calzolari-EFCore-Flurl-FakeBearerToken-TestServer/blob/main/Calzolari.WebApi.Tests/CountryControllerTests/GetByIdTests.cs
 
 Simmple usage of POST vern can be found here with the usage of the fake bearer token: https://github.com/AnthonyGiretti/Calzolari-EFCore-Flurl-FakeBearerToken-TestServer/blob/main/Calzolari.WebApi.Tests/CountryControllerTests/PostTests.cs
