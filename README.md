@@ -18,7 +18,7 @@ Add xUnit as tests runner and AutoFixture (optional)
 
 (https://www.nuget.org/packages/Calzolari.TestServer.EntityFramework/)
 
-The version 5.0.4 is the current version (.NET 5), a .NET Core 3.1 is coming soon
+The version 5.0.5 is the current version (.NET 5), a .NET Core 3.1 is coming soon
 
 ## Create a dedicated Startup file for your integration tests
 
@@ -37,8 +37,7 @@ services.AddIntegrationTestDbContext<DemoDbContext>()
 Finally register the fake bearer token authentication like this:
 
 ```csharp
-services.AddAuthentication(FakeJwtBearerDefaults.AuthenticationScheme)
-        .AddFakeJwtBearer();
+services.AddFakeBearerToken();
 ```
 
 This is needed to create an identity with a fake token during the tests
@@ -125,7 +124,7 @@ Arrange(dbContext =>
 });
 ```
 
-If you expect an autoincremented Id it works like if you wer eusing EntityFramework within your application:
+If you expect an auto incremented Id it works like if you were using EntityFramework within your application:
 
 ```csharp
 var country = Fixture.Create<Country>();
@@ -134,7 +133,7 @@ Arrange(dbContext => { dbContext.Countries.Add(country); });
 
 // country.CountryId CountryId is filled
 ```
-Then call your SUT:
+Then call your System Under Test (SUT):
 
 ```csharp
 var response = await BASE_REQUEST.Route(BaseRoute).GetAsync();
@@ -156,4 +155,4 @@ response.StatusCode
                     
 Simple usage of GET verb can be found here: https://github.com/AnthonyGiretti/Calzolari-EFCore-Flurl-FakeBearerToken-TestServer/blob/main/Calzolari.WebApi.Tests/CountryControllerTests/GetByIdTests.cs
 
-Simmple usage of POST vern can be found here with the usage of the fake bearer token: https://github.com/AnthonyGiretti/Calzolari-EFCore-Flurl-FakeBearerToken-TestServer/blob/main/Calzolari.WebApi.Tests/CountryControllerTests/PostTests.cs
+Simple usage of POST verb can be found here with the usage of the fake bearer token: https://github.com/AnthonyGiretti/Calzolari-EFCore-Flurl-FakeBearerToken-TestServer/blob/main/Calzolari.WebApi.Tests/CountryControllerTests/PostTests.cs
