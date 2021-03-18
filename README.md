@@ -151,10 +151,10 @@ And assert the result:
 
 ```csharp
 response.ResponseMessage
-		.Should()
-		.Be200Ok()
-		.And
-		.Satisfy<IEnumerable<Country>>(model =>
+	.Should()
+	.Be200Ok()
+	.And
+	.Satisfy<IEnumerable<Country>>(model =>
 {
 	model.Should().BeEquivalentTo(countries);
 });
