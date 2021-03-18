@@ -1,4 +1,4 @@
-# Clean integration tests with EF Core, Flurl, FakeBearer and Calzolari.TestServer.EntityFramework 
+# Clean integration tests with Calzolari.TestServer.EntityFramework 
 
 A fluent library to easily write integration tests for ASP.NET Core with EntityFramework Core.
 
