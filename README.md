@@ -17,7 +17,9 @@ This library uses [Flurl](https://flurl.dev/) and [FakeBearerToken](https://gith
 Optionally you can add:
 
 [xUnit](https://xunit.net/) as tests runner
+
 [FluentAssertions.Web](https://github.com/adrianiftode/FluentAssertions.Web) for assertions on HttpResponseMessage
+
 [AutoFixture](https://github.com/AutoFixture/AutoFixture) for autofill any type of object
 
 ## Install the package Calzolari.TestServer.EntityFramework
