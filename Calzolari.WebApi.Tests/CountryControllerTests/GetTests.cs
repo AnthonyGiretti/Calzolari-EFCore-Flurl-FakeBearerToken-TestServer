@@ -34,16 +34,14 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route(BaseRoute).GetAsync();
 
             // Assert
-            response.StatusCode
-                .Should()
-                .Be((int) HttpStatusCode.OK);
-
-            (await response.ResponseMessage
-                    .Content
-                    .ReadAsAsync<IEnumerable<Country>>())
+            response.ResponseMessage
                     .Should()
-                    .BeEquivalentTo(countries);
-
+                    .Be200Ok()
+                    .And
+                    .Satisfy<IEnumerable<Country>>(model =>
+            {
+                model.Should().BeEquivalentTo(countries);
+            });
         }
 
         [Fact]
@@ -55,11 +53,7 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route("wrongroute").GetAsync();
 
             // Assert
-            response.StatusCode
-                .Should()
-                .Be((int)HttpStatusCode.NotFound);
-
-
+            response.ResponseMessage.Should().Be404NotFound();
         }
 
         [Fact]
@@ -71,16 +65,14 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route(BaseRoute).GetAsync();
 
             // Assert
-            response.StatusCode
-                .Should()
-                .Be((int)HttpStatusCode.OK);
-
-            (await response.ResponseMessage
-                    .Content
-                    .ReadAsAsync<IEnumerable<Country>>())
+            response.ResponseMessage
                     .Should()
-                    .BeNullOrEmpty();
-
+                    .Be200Ok()
+                    .And
+                    .Satisfy<IEnumerable<Country>>(model =>
+                    {
+                        model.Should().BeNullOrEmpty();
+                    });
         }
     }
 }

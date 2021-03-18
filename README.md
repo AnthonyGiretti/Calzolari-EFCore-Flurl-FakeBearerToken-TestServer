@@ -14,7 +14,7 @@ This library uses [Flurl](https://flurl.dev/) and [FakeBearerToken](https://gith
 
 ## Create your integration test project
 
-Add xUnit as tests runner and AutoFixture (optional)
+Optionally you can add xUnit as tests runner, [FluentAssertions.Web] (https://github.com/adrianiftode/FluentAssertions.Web) and [AutoFixture] (https://github.com/AutoFixture/AutoFixture)
 
 ## Install the package Calzolari.TestServer.EntityFramework
 
@@ -144,15 +144,14 @@ var response = await BASE_REQUEST.Route(BaseRoute).GetAsync();
 And assert the result:
 
 ```csharp
-response.StatusCode
-.Should()
-.Be((int) HttpStatusCode.OK);
-
-(await response.ResponseMessage
-    .Content
-    .ReadAsAsync<IEnumerable<Country>>())
-    .Should()
-    .BeEquivalentTo(countries);
+response.ResponseMessage
+		.Should()
+		.Be200Ok()
+		.And
+		.Satisfy<IEnumerable<Country>>(model =>
+{
+	model.Should().BeEquivalentTo(countries);
+});
 ```                    
                     
 Simple usage of GET verb can be found here: https://github.com/AnthonyGiretti/Calzolari-EFCore-Flurl-FakeBearerToken-TestServer/blob/main/Calzolari.WebApi.Tests/CountryControllerTests/GetByIdTests.cs

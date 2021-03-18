@@ -23,7 +23,7 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
         public async Task When_route_is_correct_and_authorization_well_setup_should_return_Created()
         {
             // Arrange
-            var country = Fixture.Create<Country>();
+            var country = Fixture.Build<Country>().Without(c => c.CountryId).Create();
             var token = new
             {
                 sub = "Anthony Giretti",
@@ -34,15 +34,15 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route(BaseRoute).FakeToken(token).PostJsonAsync(country);
 
             // Assert
-            response.StatusCode
+            var test = await response.ResponseMessage.Content.ReadAsStringAsync();
+            response.ResponseMessage
                     .Should()
-                    .Be((int)HttpStatusCode.Created);
-
-            (await response.ResponseMessage
-                    .Content
-                    .ReadAsAsync<Country>())
-                    .Should()
-                    .NotBeNull();
+                    .Be201Created()
+                    .And.Satisfy<Country>(model =>
+                    {
+                        model.Description.Should().Be(country.Description);
+                        model.CountryName.Should().Be(country.CountryName);
+                    });
         }
 
         [Fact]
@@ -59,9 +59,9 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route(BaseRoute).FakeToken(token).PostJsonAsync(country);
 
             // Assert
-            response.StatusCode
-                .Should()
-                .Be((int)HttpStatusCode.Forbidden);
+            response.ResponseMessage
+                    .Should()
+                    .Be403Forbidden();
         }
 
         [Fact]
@@ -79,9 +79,9 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route(BaseRoute).FakeToken(token).PostJsonAsync(country);
 
             // Assert
-            response.StatusCode
-                .Should()
-                .Be((int)HttpStatusCode.Forbidden);
+            response.ResponseMessage
+                    .Should()
+                    .Be403Forbidden();
         }
 
         [Fact]
@@ -94,9 +94,9 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route(BaseRoute).PostJsonAsync(country);
 
             // Assert
-            response.StatusCode
-                .Should()
-                .Be((int)HttpStatusCode.Unauthorized);
+            response.ResponseMessage
+                    .Should()
+                    .Be401Unauthorized();
         }
     }
 }

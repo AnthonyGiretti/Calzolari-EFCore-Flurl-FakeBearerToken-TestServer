@@ -31,15 +31,14 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route(string.Format(BaseRoute, country.CountryId)).GetAsync();
 
             // Assert
-            response.StatusCode
+            response.ResponseMessage
                 .Should()
-                .Be((int) HttpStatusCode.OK);
-
-            (await response.ResponseMessage
-                    .Content
-                    .ReadAsAsync<Country>())
-                .Should()
-                .BeEquivalentTo(country);
+                .Be200Ok()
+                .And
+                .Satisfy<Country>(model =>
+                {
+                    model.Should().BeEquivalentTo(country);
+                });
         }
 
 
@@ -56,9 +55,9 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route(string.Format(BaseRoute, wrongCountryId)).GetAsync();
 
             // Assert
-            response.StatusCode
-                .Should()
-                .Be((int) HttpStatusCode.NotFound);
+            response.ResponseMessage
+                    .Should()
+                    .Be404NotFound();
         }
     }
 }
