@@ -24,7 +24,7 @@ Optionally you can add:
 
 ## Install the package Calzolari.TestServer.EntityFramework
 
-(https://www.nuget.org/packages/Calzolari.TestServer.EntityFramework/)
+The package can be found here: https://www.nuget.org/packages/Calzolari.TestServer.EntityFramework/
 
 The version 5.0.5 is the current version (.NET 5), a .NET Core 3.1 is coming soon
 
