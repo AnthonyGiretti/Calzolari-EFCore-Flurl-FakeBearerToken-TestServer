@@ -35,13 +35,10 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
 
             // Assert
             response.ResponseMessage
-                    .Should()
-                    .Be200Ok()
-                    .And
-                    .Satisfy<IEnumerable<Country>>(model =>
-            {
-                model.Should().BeEquivalentTo(countries);
-            });
+                .Should()
+                .Be200Ok()
+                .And
+                .BeAs(countries);
         }
 
         [Fact]

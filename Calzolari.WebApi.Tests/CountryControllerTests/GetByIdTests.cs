@@ -35,10 +35,7 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
                 .Should()
                 .Be200Ok()
                 .And
-                .Satisfy<Country>(model =>
-                {
-                    model.Should().BeEquivalentTo(country);
-                });
+                .BeAs(country);
         }
 
 
