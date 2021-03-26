@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoFixture;
 using Calzolari.TestServer.EntityFramework.Flurl;
 using Calzolari.WebApi.Models;
@@ -34,15 +32,14 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             var response = await BASE_REQUEST.Route(BaseRoute).FakeToken(token).PostJsonAsync(country);
 
             // Assert
-            var test = await response.ResponseMessage.Content.ReadAsStringAsync();
             response.ResponseMessage
-                .Should()
-                .Be201Created()
-                .And.BeAs(new
-                {
-                    country.CountryName,
-                    country.Description
-                });
+                    .Should()
+                    .Be201Created()
+                    .And.BeAs(new
+                    {
+                        country.CountryName,
+                        country.Description
+                    });
         }
 
         [Fact]
