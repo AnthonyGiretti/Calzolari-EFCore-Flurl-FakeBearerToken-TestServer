@@ -8,7 +8,7 @@ Following example uses AutoFixture and xUnit but you can use other tools if you 
 
 It's not recommended for large databases.
 
-This library uses [Flurl](https://flurl.dev/) and [FakeBearerToken](https://github.com/webmotions/fake-authentication-jwtbearer) ([Dominique St-Amand](https://github.com/DOMZE))
+This library uses [Flurl](https://flurl.dev/) and [FakeBearerToken](https://github.com/webmotions/fake-authentication-jwtbearer)
 
 # Steps to setup your project
 
