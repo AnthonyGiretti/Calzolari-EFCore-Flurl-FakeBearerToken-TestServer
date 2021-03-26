@@ -36,13 +36,13 @@ namespace Calzolari.WebApi.Tests.CountryControllerTests
             // Assert
             var test = await response.ResponseMessage.Content.ReadAsStringAsync();
             response.ResponseMessage
-                    .Should()
-                    .Be201Created()
-                    .And.Satisfy<Country>(model =>
-                    {
-                        model.Description.Should().Be(country.Description);
-                        model.CountryName.Should().Be(country.CountryName);
-                    });
+                .Should()
+                .Be201Created()
+                .And.BeAs(new
+                {
+                    country.CountryName,
+                    country.Description
+                });
         }
 
         [Fact]
