@@ -154,10 +154,7 @@ response.ResponseMessage
 	.Should()
 	.Be200Ok()
 	.And
-	.Satisfy<IEnumerable<Country>>(model =>
-{
-	model.Should().BeEquivalentTo(countries);
-});
+	.BeAs(countries);
 ```                    
                     
 Simple usage of GET verb can be found here: https://github.com/AnthonyGiretti/Calzolari-EFCore-Flurl-FakeBearerToken-TestServer/blob/main/Calzolari.WebApi.Tests/CountryControllerTests/GetByIdTests.cs
